@@ -1,0 +1,45 @@
+        .pos 0
+        irmovq array1, %rax
+        irmovq array2, %rbx
+        irmovq $8, %r8
+        
+        mrmovq (%rax), %rcx
+        nop
+        nop
+        rmmovq %rcx, (%rbx)
+        addq %r8, %rax
+        addq %r8, %rbx
+        nop
+
+        mrmovq (%rax), %rcx
+        nop
+        nop
+        rmmovq %rcx, (%rbx)
+        addq %r8, %rax
+        addq %r8, %rbx
+        nop
+
+        mrmovq (%rax), %rcx
+        nop
+        nop
+        rmmovq %rcx, (%rbx)
+        addq %r8, %rax
+        addq %r8, %rbx
+        nop
+
+        mrmovq (%rax), %rcx
+        nop
+        nop
+        rmmovq %rcx, (%rbx)
+        
+        halt
+        .align 8
+array1: .quad 1
+        .quad 2
+        .quad 3
+        .quad 4
+
+array2: .quad 0
+        .quad 0
+        .quad 0
+        .quad 0

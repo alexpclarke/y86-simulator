@@ -1,0 +1,79 @@
+###VALA###
+#forward e_valE for valA
+        irmovq $1, %rcx
+        subq %rcx, %rdx
+
+#forward m_valM for valA
+        irmovq array, %rcx
+        nop
+        mrmovq (%rcx), %rbx
+        nop
+        subq %rbx, %rcx
+        
+#forward M_valE for valA
+        irmovq 15, %rbx
+        nop
+        irmovq 1, %rcx
+        nop
+        andq %rcx, %rbx
+
+#forward W_valM for valA
+        irmovq array, %rcx
+#mrmovq in write back
+        mrmovq 8(%rcx), %rax
+        nop
+        nop
+#andq in decode
+        andq %rax, %rbx
+
+#forward W_valE for valA 
+        irmovq 5, %rax
+        nop
+        nop
+        addq %rax, %rbx
+###VALB###
+
+#forward e_valE for valB
+        irmovq $3, %rcx
+        subq %rdx, %rcx
+
+#forward m_valM for valB
+        irmovq array, %rcx
+        nop
+        mrmovq 16(%rcx), %rbx
+        nop
+        subq %rcx, %rbx
+
+#forward M_valE for valB
+        irmovq 15, %rbx
+        nop
+        irmovq 1, %rcx
+        nop
+        andq %rbx, %rcx
+
+#forward W_valM for valB
+        irmovq array, %rcx
+        mrmovq (%rcx), %rax
+        nop
+        nop
+        andq %rcx, %rax
+
+#forward W_valE for valB
+        irmovq 5, %rax
+        nop
+        nop
+        addq %rbx, %rax
+        halt
+        nop
+        nop
+        nop
+        nop
+        nop
+
+        .align 8
+array:  .quad 1
+        .quad 2
+        .quad 3
+        .quad 4
+        .quad 5
+
